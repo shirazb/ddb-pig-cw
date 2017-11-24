@@ -14,10 +14,12 @@ places_by_state_code =
 places_by_state_code_and_name =
     JOIN places_by_state_code BY group,
          state BY code;
-DESCRIBE LIMIT places_by_state_code_and_name 10;
+
 flat_state_top_five_populations =
     FOREACH places_by_state_code_and_name {
-        most_populated_places =
+        -- Is there a better way that does not require ordering all of
+        -- place_state_name_pop when only the top 5 is needed?
+        most_populated_places = 
             ORDER place_state_name_pop
             BY    population, name;
 
