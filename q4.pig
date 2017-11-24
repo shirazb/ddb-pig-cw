@@ -9,7 +9,7 @@ places_by_state_code =
     GROUP place_state_name_pop
     BY    state_code;
 
--- Where is optimal place to group? Here has fewest state_code rows.
+-- Where is optimal place to join? Here has fewest state_code rows.
 -- Is join optimised to trim cols of state other than code and name (used later)?
 places_by_state_code_and_name =
     JOIN places_by_state_code BY group,
